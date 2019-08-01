@@ -53,14 +53,13 @@ def get_quotes(person, category):
     quote_list = []
     big_list = []
     for i in range(count):
-        quote_list.append(get_quote[i].text)
+        quote_list.append((get_quote[i].text, person))
         big_list.append(quote_list)
 
     if len(quote_list) == 0:
         return('''Oops! It seems that there are no quotes of the author of that
                 category.
                 \nYou may consider changing the category or the author ''')
-    quote_list.append(person)
 
     return(quote_list)
 
@@ -81,11 +80,11 @@ def get_quote(person, category):
         return("No quotes found of that category")
     else:
         random_number = random.randint(0, length - 1)
-        list = []
-        list.append(quotes[random_number])
-        list.append(person)
+        quote_with_author_list = []
+        quote_with_author_list.append(quotes[random_number])
+        quote_with_author_list.append(person)
 
-        return(tuple(list))
+        return(tuple(quote_with_author_list))
 
 
 def get_quote_of_the_day():
